@@ -1,0 +1,8 @@
+---
+- hosts: groupa
+  become: yes
+  tasks:
+  - name: "Installing apache2"
+    apt: 
+      name: apache2
+      state: absent
