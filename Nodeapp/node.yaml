@@ -44,7 +44,18 @@
     webserver_dns_name: "ec2-13-59-188-102.us-east-2.compute.amazonaws.com"
     appserver_ip: 172.31.45.208
   tasks:
-  - name" install nginx
+  - name: install nginx
     apt:
       name: nginx
       state: present
+  - name: copy default file
+    template:
+      src: templates/default.j2
+      dest: /etc/nginx/sites-available/default
+    notify: Restart Nginx
+  handlers:
+  - name: Restart Nginx
+    service:
+      name: nginx
+      state: restarted
+  
