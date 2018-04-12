@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    package_name: apache2
+  tasks:
+  - name: "install web server"
+    package:
+      name: "{{package_name}}"
+      state: present
+
+
+
+      

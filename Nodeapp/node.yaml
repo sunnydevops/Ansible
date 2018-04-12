@@ -1,0 +1,27 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Update apt package
+    apt:
+      update_cache: yes
+# Nodejs specific settings
+# install nodejs from
+# https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04#how-to-install-using-a-ppa
+- hosts: app
+  become: yes
+  vars:
+    folderpath: /home/ansible/nodesetup
+  tasks:
+  - name: Creating nodesetup directory
+    path: "{{folderpath}}"
+    state: directory
+    mode: 0755
+  - name: Download nodejs package setup
+    command: "curl -sL https://deb.nodesource.com/setup_8.x -o {{folderpath}}/nodesource_setup.sh"
+  - name: Execute downloaded shell script
+    command: "sudo bash {{folderpath}}/nodesource_setup.sh"
+  - name : install nodejs
+    apt:
+      name: nodejs
+      state: present
