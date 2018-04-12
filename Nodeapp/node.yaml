@@ -13,6 +13,7 @@
   vars:
     folderpath: /home/ansible/nodesetup
     appserverport: 8080
+    app_ip: 172.31.45.208
   tasks:
   - name: Creating nodesetup directory
     file:
