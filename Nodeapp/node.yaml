@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: yes
+  become: yes 
   tasks:
   - name: Update apt package
     apt:
@@ -33,7 +33,7 @@
       dest: "{{ folderpath }}/hello.js"
   - name: Install pm2
     npm:
-      name: cofee-script
+      name: pm2
       global: yes
   - name: start nodejs apps
     command: "npm start {{ folderpath }}/hello.js "
