@@ -31,3 +31,20 @@
     template:
       src: "templates/hello.js.j2"
       dest: "{{ folderpath }}/hello.js"
+  - name: Install pm2
+    npm:
+      name: cofee-script
+      global: yes
+  - name: start nodejs apps
+    command: "npm start {{ folderpath }}/hello.js "
+
+- hosts: web
+  become: yes
+  vars:
+    webserver_dns_name: "ec2-13-59-188-102.us-east-2.compute.amazonaws.com"
+    appserver_ip: 172.31.45.208
+  tasks:
+  - name" install nginx
+    apt:
+      name: nginx
+      state: present
