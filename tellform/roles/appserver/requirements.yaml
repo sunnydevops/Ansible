@@ -1,2 +1,5 @@
-# from glaxy
+# from galaxy for redis server
 - src: jpnewman.redis
+
+# from galaxy for mongodb
+- src: nsops.momgodb
