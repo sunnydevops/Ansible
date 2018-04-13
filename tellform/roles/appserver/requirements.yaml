@@ -2,4 +2,4 @@
 - src: jpnewman.redis
 
 # from galaxy for mongodb
-- src: nsops.momgodb
+- src: lesmyrmidons.mongodb
